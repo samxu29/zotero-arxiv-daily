@@ -63,6 +63,7 @@ Below are all the secrets you need to set. They are invisible to anyone includin
 | SENDER_PASSWORD | ✅ | str | The password of the sender account. Note that it's not necessarily the password for logging in the e-mail client, but the authentication code for SMTP service. Ask your email provider for this.   | abcdefghijklmn |
 | RECEIVER | ✅ | str | The e-mail address that receives the paper list. | abc@outlook.com |
 | MAX_PAPER_NUM | | int | The maximum number of the papers presented in the email. This value directly affects the execution time of this workflow, because it takes about 70s to generate TL;DR for one paper. `-1` means to present all the papers retrieved. | 50 |
+| SEND_EMPTY | | bool | Whether to send an empty email even if no new papers today. | False |
 | USE_LLM_API | | bool | Whether to use the LLM API in the cloud or to use local LLM. If set to `1`, the API is used. Else if set to `0`, the workflow will download and deploy an open-source LLM. Default to `0`. | 0 |
 | OPENAI_API_KEY | | str | API Key when using the API to access LLMs. You can get FREE API for using advanced open source LLMs in [SiliconFlow](https://cloud.siliconflow.cn/i/b3XhBRAm). | sk-xxx |
 | OPENAI_API_BASE | | str | API URL when using the API to access LLMs. If not filled in, the default is the OpenAI URL. | https://api.siliconflow.cn/v1 |
@@ -100,6 +101,12 @@ uv run main.py
 > [!WARNING]
 > Other package managers like pip or conda are not tested. You can still use them to install this workflow because there is a `pyproject.toml`, while potential problems exist.
 
+## 🚀 Sync with the latest version
+This project is in active development. You can subscribe this repo via `Watch` so that you can be notified once we publish new release.
+
+![Watch](./assets/subscribe_release.png)
+
+
 ## 📖 How it works
 *Zotero-arXiv-Daily* firstly retrieves all the papers in your Zotero libarary and all the papers released in the previous day, via corresponding API. Then it calculates the embedding of each paper's abstract via an embedding model. The score of a paper is its weighted average similarity over all your Zotero papers (newer paper added to the libarary has higher weight).
 
@@ -117,6 +124,11 @@ Distributed under the AGPLv3 License. See `LICENSE` for detail.
 - [arxiv](https://github.com/lukasschwab/arxiv.py)
 - [sentence_transformers](https://github.com/UKPLab/sentence-transformers)
 - [llama-cpp-python](https://github.com/abetlen/llama-cpp-python)
+
+## ☕ Buy Me A Coffee
+If you find this project helpful, welcome to sponsor me via WeChat or via [ko-fi](https://ko-fi.com/tidedra).
+![wechat_qr](assets/wechat_sponsor.JPG)
+
 
 ## 🌟 Star History
 
